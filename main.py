@@ -38,7 +38,7 @@ def setup_logger():
 
 def help(update, context):
     update.message.reply_text('Mevcud Komutlar:\n' +
-                              '/basla - Yeni oyun başlat\n' +
+                              '/baslat - Yeni oyun başlat\n' +
                               '/master - Liderlik \n' +
                               '/rating - Grup Reytingleri', reply_to_message_id=True)
 
@@ -66,10 +66,10 @@ def button(update, context):
 def command_start(update, context: CallbackContext):
     if update.effective_chat.type == "private":
         
-        addme = InlineKeyboardButton(text="🧚 Gruba Ekleyin!", url="https://t.me/KelimeOyunumBot?startgroup=a")
-        sohbet = InlineKeyboardButton(text="💬 Sohbet Grubumuz", url="https://t.me/muhabbetofkings")
-        oyun = InlineKeyboardButton(text="👾 Arşiv Kanalımız", url="https://t.me/CyberTurkish")
-        admin = InlineKeyboardButton(text="👨🏻‍💻 Sahip", url="https://t.me/SancakBegi")
+        addme = InlineKeyboardButton(text="🧚 Gruba Ekleyin!", url="")
+        sohbet = InlineKeyboardButton(text="💬 Sohbet Grubumuz", url="")
+        oyun = InlineKeyboardButton(text="👾 Arşiv Kanalımız", url="")
+        admin = InlineKeyboardButton(text="👨🏻‍💻 Sahip", url="https://t.me/rahatsizetmeyiniz")
 
         keyboard = [[addme],[sohbet],[oyun],[admin]]
         reply_markup = InlineKeyboardMarkup(keyboard)
@@ -104,8 +104,8 @@ def set_master(update, context):
 
     game.set_master(update.message.from_user.id)
 
-    show_word_btn = InlineKeyboardButton("👻Söze bak", callback_data='show_word')
-    change_word_btn = InlineKeyboardButton("♻️Sözü değiştir", callback_data='change_word')
+    show_word_btn = InlineKeyboardButton("👻kelimeye bak", callback_data='show_word')
+    change_word_btn = InlineKeyboardButton("♻️kelimeyi değiştir", callback_data='change_word')
 
     keyboard = [[show_word_btn], [change_word_btn]]
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -233,7 +233,7 @@ def main():
 
     dp = updater.dispatcher
 
-    dp.add_handler(CommandHandler("basla", command_start))
+    dp.add_handler(CommandHandler("baslat", command_start))
     dp.add_handler(CommandHandler("master", command_master))
     dp.add_handler(CommandHandler("show_word", command_show_word))
     dp.add_handler(CommandHandler("change_word", command_change_word))
